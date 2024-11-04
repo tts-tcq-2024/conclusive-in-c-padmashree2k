@@ -6,7 +6,9 @@ To verify that the inferBreach function correctly classifies temperature values 
 **Inputs:**
 
 **value:** The temperature value to test.
+
 **lowerLimit:** The lower threshold for normal temperature.
+
 **upperLimit:** The upper threshold for normal temperature.
 
 **Expected Outputs:**
@@ -18,7 +20,9 @@ Returns TOO_LOW if the value is below the lower limit.
 **Test Cases:**
 
 Input: value = 30, lowerLimit = 0, upperLimit = 35 → Expected Output: NORMAL
+
 Input: value = 36, lowerLimit = 0, upperLimit = 35 → Expected Output: TOO_HIGH
+
 Input: value = -1, lowerLimit = 0, upperLimit = 35 → Expected Output: TOO_LOW
 
 
@@ -29,6 +33,7 @@ To ensure that classifyTemperatureBreach function correctly identifies temperatu
 **Inputs:**
 
 **coolingType:** The cooling type of the battery.
+
 **temperatureInC:** The temperature in Celsius to check against the limits.
 
 **Expected Outputs:**
@@ -37,7 +42,9 @@ Correct breach type based on the cooling type limits.
 
 **Test Cases:**
 **Input:** coolingType = PASSIVE_COOLING, temperatureInC = 30 → Expected Output: NORMAL
+
 **Input:** coolingType = HI_ACTIVE_COOLING, temperatureInC = 46 → Expected Output: TOO_HIGH
+
 **Input:** coolingType = MED_ACTIVE_COOLING, temperatureInC = -1 → Expected Output: TOO_LOW
 
 
@@ -48,6 +55,7 @@ To verify that alerts are sent correctly based on the breach type and the alert 
 **Inputs:**
 
 **breachType:** The breach type to be sent.
+
 **alertTarget:** The target to which the alert is sent (controller or email).
 
 **Expected Outputs:**
@@ -57,4 +65,5 @@ Verifies that the correct alert function is called with the appropriate breach t
 **Test Cases (to be implemented with a mocking framework):**
 
 **Input:** breachType = TOO_LOW, alertTarget = TO_CONTROLLER → Expected: Calls sendToController(TOO_LOW)
+
 **Input:** breachType = TOO_HIGH, alertTarget = TO_EMAIL → Expected: Calls sendToEmail(TOO_HIGH)
